@@ -1,98 +1,276 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aegorionyx — Intelligent Safety Systems</title>
-  <meta name="description" content="Aegorionyx builds intelligent safety systems across vehicles and aviation.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aegorionyx — Research & Development in Safety, Security, and Compliance</title>
+  <meta name="description" content="Aegorionyx is a holding company focused on research and development of safety, security, and compliance systems. We incubate and operate brands advancing trusted operations in mission‑critical environments." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="main.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Palette derived from the Aegorionyx shield: deep green, copper edge, silver traces */
+      --green-0:#0f1a16;  /* page background base */
+      --green-1:#12231d;  /* card bg */
+      --green-2:#143129;  /* header glass */
+      --brand-green:#1e4b3f;
+      --brand-green-2:#295e4f;
+      --copper:#b57535;   /* copper frame */
+      --copper-2:#d18b46;
+      --silver:#b4c1bf;   /* trace line */
+      --text-0:#f0f6f5;   /* high */
+      --text-1:#c9d4d2;   /* mid */
+      --glass:rgba(255,255,255,.06);
+      --glass-2:rgba(255,255,255,.12);
+      --shadow:0 10px 28px rgba(0,0,0,.35);
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; color:var(--text-0);
+      background:
+        radial-gradient(1000px 600px at 10% -10%, rgba(21,83,69,.22), transparent 55%),
+        radial-gradient(900px 500px at 110% 10%, rgba(209,139,70,.14), transparent 60%),
+        linear-gradient(180deg, var(--green-0), #0c1512);
+      letter-spacing:.2px}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1180px; margin:0 auto; padding:0 20px}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:40; backdrop-filter:saturate(1.2) blur(8px); background:linear-gradient(180deg, rgba(12,21,18,.9), rgba(12,21,18,.45)); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; height:76px}
+    .brand{display:flex; align-items:center; gap:14px}
+    .logo{width:44px; height:44px; border-radius:12px; overflow:hidden; position:relative; box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), var(--shadow)}
+    /* shield motif */
+    .logo::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 50% 50%, var(--brand-green), var(--green-1));}
+    .logo::after{content:""; position:absolute; inset:3px; border-radius:10px; box-shadow:inset 0 0 0 2px var(--copper), 0 0 0 0 rgba(0,0,0,0);}    
+    .wordmark{font-weight:900; letter-spacing:.6px}
+
+    nav a.link{opacity:.85}
+    nav a.link:hover{opacity:1}
+
+    .cta{display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:14px; background:linear-gradient(180deg, var(--copper), var(--copper-2)); color:#0d1210; font-weight:800; box-shadow:var(--shadow)}
+
+    /* Hero */
+    .hero{position:relative; padding:72px 0 48px}
+    .hero .grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:36px}
+    .kicker{display:inline-flex; align-items:center; gap:10px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); font-size:.82rem}
+    h1{margin:.2em 0 .4em; font-size:3rem; line-height:1.05; letter-spacing:.2px}
+    .lead{color:var(--text-1); font-size:1.06rem; line-height:1.6}
+
+    .shield{display:flex; align-items:center; justify-content:center; position:relative; padding:24px; border-radius:28px; background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.08); min-height:320px; box-shadow:var(--shadow)}
+    .shield img{max-width:340px; width:100%; height:auto; filter:drop-shadow(0 20px 50px rgba(0,0,0,.45))}
+
+    /* Section blocks */
+    section{padding:64px 0}
+    .section-title{font-size:2rem; margin:0 0 8px}
+    .section-sub{color:var(--text-1); margin:0 0 24px}
+
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.08); font-size:.75rem}
+
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
+    .grid-4{display:grid; grid-template-columns: repeat(4, 1fr); gap:18px}
+    .card{padding:18px; border-radius:18px; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08)}
+    .card h3{margin:.2em 0 .4em}
+
+    .callout{display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; align-items:center; padding:18px; border-radius:24px; background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08)}
+
+    /* Brand tiles */
+    .brands{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    .brand-tile{display:flex; align-items:center; gap:16px; padding:18px; border-radius:18px; background:var(--glass); border:1px solid rgba(255,255,255,.08)}
+    .brand-logo{width:64px; height:64px; border-radius:12px; overflow:hidden; display:grid; place-items:center; background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08)}
+    .brand-name{font-weight:800; letter-spacing:.4px}
+    .brand-desc{color:var(--text-1); margin-top:4px}
+
+    footer{padding:48px 0 80px; border-top:1px solid rgba(255,255,255,.06); background:linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.35))}
+    .foot{display:grid; grid-template-columns: 1.2fr .8fr; gap:24px}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero .grid{grid-template-columns:1fr}
+      .callout{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .grid-4{grid-template-columns:1fr 1fr}
+      .brands{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      h1{font-size:2.25rem}
+      .grid-3, .grid-4{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
-<header class="nav">
-  <a class="brand" href="./"><img src="assets/aegorionyx-logo.jpg" alt="Aegorionyx logo"><span>Aegorionyx</span></a>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#brands">Our Brands</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <div class="hero-inner">
-    <h1>Intelligent <span>Safety</span>, Engineered.</h1>
-    <p>Aegorionyx designs secure, offline‑first systems for vehicles and aviation—bringing trusted hardware, precise software, and verifiable telemetry together.</p>
-    <div class="cta-row">
-      <a class="btn primary" href="#brands">Explore Brands</a>
-      <a class="btn ghost" href="#contact">Talk to Us</a>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="wordmark">AEGORIONYX</div>
+          <div class="pill">Research & Development • Safety • Security • Compliance</div>
+        </div>
+      </div>
+      <nav style="display:flex; align-items:center; gap:22px">
+        <a class="link" href="#about">About</a>
+        <a class="link" href="#capabilities">Capabilities</a>
+        <a class="link" href="#sectors">Sectors</a>
+        <a class="link" href="#brands">Our Brands</a>
+        <a class="cta" href="#contact"><span>Partner With Us</span></a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<section id="about" class="grid3">
-  <article>
-    <h3>Offline‑First Security</h3>
-    <p>Critical features operate without cloud dependency, with optional admin consoles for oversight and fleet control.</p>
-  </article>
-  <article>
-    <h3>Trusted Hardware</h3>
-    <p>We pair tamper‑aware modules with robust connectors and signed profiles to protect people, data, and machines.</p>
-  </article>
-  <article>
-    <h3>Purpose‑Built UX</h3>
-    <p>Clear interfaces for operators and maintainers; APIs for enterprise; and exports for audits and compliance.</p>
-  </article>
-</section>
+  <main>
+    <section class="hero">
+      <div class="wrap grid">
+        <div>
+          <div class="kicker">Applied research for trusted operations</div>
+          <h1>We build and incubate systems that make critical operations <span style="background:linear-gradient(180deg, var(--copper), var(--copper-2)); -webkit-background-clip:text; background-clip:text; color:transparent">safer, more secure, and compliant</span>.</h1>
+          <p class="lead">Aegorionyx is a holding company focused on R&D across identity, access control, device binding, and compliance automation. Our technologies are engineered for offline‑first environments with rigorous auditability.</p>
+          <div style="display:flex; gap:12px; margin-top:18px; flex-wrap:wrap">
+            <a class="cta" href="#contact">Discuss a Program</a>
+            <a class="cta" style="background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06)); color:var(--text-0); border:1px solid rgba(255,255,255,.16)" href="#capabilities">Explore Capabilities</a>
+          </div>
+        </div>
+        <div>
+          <div class="shield" aria-label="Aegorionyx shield logo">
+            <!-- Replace the src below with your real logo path, e.g. images/aegorionyx-shield.png -->
+            <img src="images/aegorionyx-shield.png" alt="Aegorionyx shield logo" />
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="brands" class="brands">
-  <h2>Our Brands</h2>
-  <div class="brand-cards">
-    <a class="card" href="https://fixitqc.com" target="_blank" rel="noopener">
-      <img src="assets/fixitqc-logo.png" alt="FixIt QC">
-      <h4>FixIt QC</h4>
-      <p>Jet fueling quality control tracking & reporting.</p>
-    </a>
-    <a class="card" href="https://placeholder.strijder" data-pending="true">
-      <img src="assets/strijder-logo.jpg" alt="Strijder Vehicle Safety">
-      <h4>Strijder Vehicle Safety</h4>
-      <p>In‑vehicle diagnostics, security & dash‑cam intelligence.</p>
-    </a>
-    <a class="card" href="./">
-      <img src="assets/aegorionyx-logo.jpg" alt="Aegorionyx">
-      <h4>Aegorionyx</h4>
-      <p>Parent organization for intelligent safety systems.</p>
-    </a>
-  </div>
-  <p class="note">We’ll wire Strijder’s final URL as soon as you share it.</p>
-</section>
+    <section id="about">
+      <div class="wrap">
+        <div class="callout">
+          <div>
+            <h2 class="section-title">What we do</h2>
+            <p class="section-sub">We research and develop safety, security, and compliance systems and bring them to market through focused brands. Our work spans firmware, hardware integration, secure identity, and policy‑driven controls.</p>
+            <div style="display:flex; gap:12px; flex-wrap:wrap"><a class="cta" href="#brands">See Our Brands</a></div>
+          </div>
+          <div>
+            <div class="card">
+              <div class="pill">Pillars of our R&D</div>
+              <ul style="line-height:1.8; color:var(--text-1); margin:12px 0 0 18px">
+                <li>Offline‑first validation with secure sync</li>
+                <li>Hardware‑aware access control (BTSI, shift‑by‑wire, device binding)</li>
+                <li>Identity: biometric, NFC, and key‑code enrollment</li>
+                <li>Compliance automation and tamper‑evident audit trails</li>
+                <li>Least‑privilege, role‑scoped administration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="features">
-  <div class="feature">
-    <h3>Security Model</h3>
-    <ul>
-      <li>Local validation: biometrics / NFC / keycode</li>
-      <li>Profile + vehicle keys cached and matched offline</li>
-      <li>Admin routing via cloud console (optional)</li>
-    </ul>
-  </div>
-  <div class="feature">
-    <h3>Telemetry & Evidence</h3>
-    <ul>
-      <li>Signed event trails and policy‑driven retention</li>
-      <li>PDF / CSV exports for audits</li>
-      <li>Role‑based access and approvals</li>
-    </ul>
-  </div>
-</section>
+    <section id="capabilities">
+      <div class="wrap">
+        <h2 class="section-title">Capabilities</h2>
+        <p class="section-sub">From concept and prototyping to pilot and production deployment.</p>
+        <div class="grid-3">
+          <div class="card"><h3>Identity & Access</h3><p>Biometric/NFC validation, multi‑factor enrollment, and role‑aware access enforced at the edge.</p></div>
+          <div class="card"><h3>Device & Vehicle Binding</h3><p>Bind devices to assets with permanent lock options and hardware interlocks honoring policy.</p></div>
+          <div class="card"><h3>Secure Firmware</h3><p>Signed update channels, package attestation, and controlled rollout windows.</p></div>
+          <div class="card"><h3>Compliance Automation</h3><p>Policy engines and audit trails that satisfy real‑world oversight.</p></div>
+          <div class="card"><h3>Admin Console</h3><p>Org‑mirrored controls—global to station—designed for least‑privilege operations.</p></div>
+          <div class="card"><h3>Data & Telemetry</h3><p>Operational metrics and integrity checks suitable for regulated environments.</p></div>
+        </div>
+      </div>
+    </section>
 
-<footer id="contact" class="footer">
-  <div>
-    <h4>Contact</h4>
-    <p>Email: <a href="mailto:hello@aegorionyx.com">hello@aegorionyx.com</a></p>
-    <small>© <span id="y"></span> Aegorionyx. All rights reserved.</small>
-  </div>
-</footer>
+    <section id="sectors">
+      <div class="wrap">
+        <h2 class="section-title">Sectors we serve</h2>
+        <p class="section-sub">Mission‑critical operations where safety and uptime are non‑negotiable.</p>
+        <div class="grid-4">
+          <div class="card"><h3>Aviation Ground Ops</h3><p>Fueling, GSE, and ramp operations with strict compliance requirements.</p></div>
+          <div class="card"><h3>Transportation & Fleets</h3><p>Fleet control, access, and interlocks that work online or off.</p></div>
+          <div class="card"><h3>Energy & Logistics</h3><p>High‑reliability validation and auditability across distributed assets.</p></div>
+          <div class="card"><h3>Industrial & Facilities</h3><p>Identity, access, and safety controls for secure sites.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="brands">
+      <div class="wrap">
+        <h2 class="section-title">Our Brands</h2>
+        <p class="section-sub">Aegorionyx incubates and operates product lines that carry our R&D into the field.</p>
+        <div class="brands">
+          <a class="brand-tile" href="https://fixitqc.com" target="_blank" rel="noopener">
+            <div class="brand-logo">
+              <!-- Replace with FixIt QC logo image -->
+              <span class="brand-name">FQ</span>
+            </div>
+            <div>
+              <div class="brand-name">FixIt QC</div>
+              <div class="brand-desc">Quality‑control and incident/work‑order platform for fueling & ground operations.</div>
+            </div>
+          </a>
+          <a class="brand-tile" href="#" target="_blank" rel="noopener">
+            <div class="brand-logo">
+              <!-- Replace with Strijder logo image -->
+              <span class="brand-name">S</span>
+            </div>
+            <div>
+              <div class="brand-name">Strijder</div>
+              <div class="brand-desc">Advanced safety & security technologies under active development.</div>
+            </div>
+          </a>
+        </div>
+        <p class="section-sub" style="margin-top:14px; font-size:.92rem">Tip: place brand logo files at <code>/images/fixitqc-logo.png</code> and <code>/images/strijder-logo.png</code> then swap the placeholders above.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <h2 class="section-title">Partner with Aegorionyx</h2>
+        <p class="section-sub">Interested in a joint R&D effort, pilot, or licensing discussion? Send a note and we’ll follow up.</p>
+        <form class="callout" onsubmit="event.preventDefault(); alert('Thanks! We\'ll reach out shortly.'); this.reset();">
+          <div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+              <label>Full name<br><input required class="in" placeholder="Jane Smith"></label>
+              <label>Work email<br><input type="email" required class="in" placeholder="jane@company.com"></label>
+            </div>
+            <label style="display:block; margin-top:12px">Message<br>
+              <textarea class="in" rows="4" placeholder="Briefly describe your program or interest."></textarea>
+            </label>
+            <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap">
+              <button class="cta" type="submit">Send</button>
+            </div>
+          </div>
+          <div style="padding:12px">
+            <div class="card">
+              <div class="pill">Contact</div>
+              <p class="section-sub">Prefer email? Replace this with your real address in the HTML: <code>mailto:hello@aegorionyx.com</code></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <div class="wordmark">AEGORIONYX</div>
+        <p class="l">R&D in safety, security, and compliance.</p>
+      </div>
+      <div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+          <a class="link" href="#about">About</a>
+          <a class="link" href="#capabilities">Capabilities</a>
+          <a class="link" href="#sectors">Sectors</a>
+          <a class="link" href="#brands">Our Brands</a>
+        </div>
+        <p class="l" style="margin-top:12px">© <span id="year"></span> Aegorionyx. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
